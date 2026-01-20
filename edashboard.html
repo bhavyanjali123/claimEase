@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Reimbursement Dashboard</title>
+    <style>
+        body {
+            background: #f2f6fa; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 450px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Employee Reimbursement Dashboard</h2>
+
+        <label>Employee ID</label>
+        <input type="text" id="empID" placeholder="Enter Employee ID">
+
+        <label>Employee Name</label>
+        <input type="text" id="empName" placeholder="Enter Employee Name">
+
+        <label>Expense Name</label>
+        <input type="text" id="expense" placeholder="Enter Expense Name">
+
+        <label>Amount</label>
+        <input type="number" id="amount" placeholder="Enter Amount">
+
+        <label>Date</label>
+        <input type="date" id="date">
+
+        <label>Upload Bill (PDF)</label>
+        <input type="file" id="pdfFile" accept="application/pdf">
+
+        <label>UPI ID</label>
+        <input type="text" id="upi" placeholder="Enter your UPI ID">
+
+        <label>Description</label>
+        <textarea id="desc" placeholder="Enter Description"></textarea>
+
+        <button onclick="submitClaim()">Submit</button>
+    </div>
+
+    <script>
+        function submitClaim() {
+            let pdf = document.getElementById("pdfFile").files[0];
+
+            if (!pdf) {
+                alert("Please upload a PDF file!");
+                return;
+            }
+
+            // Convert PDF to temporary link
+            let pdfURL = URL.createObjectURL(pdf);
+
+            // Store data in localStorage (like sending to manager)
+            localStorage.setItem("employeePDF", pdfURL);
+            localStorage.setItem("employeeName", document.getElementById("empName").value);
+            localStorage.setItem("employeeAmount", document.getElementById("amount").value);
+
+            alert("Uploaded Successfully!");
+
+            // Redirect to manager page
+            window.location.href = "manager_dashboard.html";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Approval Dashboard</title>
+
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 550px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 { text-align: center; margin-bottom: 20px; }
+
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 15px;
+        }
+
+        table, th, td { border: 1px solid #ccc; }
+
+        th {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+        }
+
+        td { padding: 8px; text-align: center; }
+
+        button {
+            padding: 6px 10px; border: none; border-radius: 4px;
+            cursor: pointer; color: white;
+        }
+        .approve { background: #28a745; }
+        .reject { background: #dc3545; }
+        .pdf-btn {
+            background: #6c63ff;
+            padding: 6px 8px;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Manager Approval Dashboard</h2>
+
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Amount</th>
+                <th>Bill</th>
+                <th>Actions</th>
+            </tr>
+
+            <tr id="employeeRow">
+                <td id="empNameCell">-</td>
+                <td id="empAmountCell">-</td>
+                <td><a id="pdfLink" href="#" class="pdf-btn" target="_blank">View PDF</a></td>
+                <td>
+                    <button class="approve">Approve</button>
+                    <button class="reject">Reject</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <script>
+        window.onload = () => {
+            let name = localStorage.getItem("employeeName");
+            let amount = localStorage.getItem("employeeAmount");
+            let pdf = localStorage.getItem("employeePDF");
+
+            if (name && amount && pdf) {
+                document.getElementById("empNameCell").innerText = name;
+                document.getElementById("empAmountCell").innerText = "₹" + amount;
+                document.getElementById("pdfLink").href = pdf;
+            }
+        };
+    </script>
+
+</body>
+</html>

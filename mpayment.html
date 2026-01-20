@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Payment Method</title>
+
+    <style>
+        body {
+            background: #f2f6fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .container {
+            background: white;
+            width: 450px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .payment-option:hover {
+            background: #e9f2ff;
+            border-color: #007bff;
+        }
+
+        .payment-option input {
+            width: 18px;
+            height: 18px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 17px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Select Payment Method</h2>
+
+        <!-- UPI -->
+        <label class="payment-option">
+            <span>UPI (Google Pay / PhonePe / Paytm)</span>
+            <input type="radio" name="payment">
+        </label>
+
+        <!-- CARD -->
+        <label class="payment-option">
+            <span>Debit / Credit Card</span>
+            <input type="radio" name="payment">
+        </label>
+
+        <!-- NET BANKING -->
+        <label class="payment-option">
+            <span>Net Banking</span>
+            <input type="radio" name="payment">
+        </label>
+
+        <!-- WALLETS -->
+        <label class="payment-option">
+            <span>Wallets (Paytm, Amazon Pay, Mobikwik)</span>
+            <input type="radio" name="payment">
+        </label>
+
+        <!-- PAY LATER -->
+        <label class="payment-option">
+            <span>Pay Later (Simpl / LazyPay / Amazon Pay Later)</span>
+            <input type="radio" name="payment">
+        </label>
+
+        <button>Proceed to Pay</button>
+    </div>
+
+</body>
+</html>
